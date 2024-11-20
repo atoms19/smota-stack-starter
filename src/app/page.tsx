@@ -24,13 +24,13 @@ export default function Home() {
             </code>
             .
           </li>
-          <li>good luck on your full stack app</li>
+          <li>see the changes in real time</li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
             className="rounded-xl border border-solid border-transparent transition-colors flex items-center  justify-center bg-purple-400 text-purple-950 gap-2 hover:bg-purple-500 dark:hover:bg-[#f8c8c8] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://vercel.com/dashboard"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -55,8 +55,8 @@ export default function Home() {
           <Code2Icon className="w-5 h-5 text-stone-600"/>
           <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
+          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+           target="_blank"
           rel="noopener noreferrer"
         >
           Nextjs</a>
@@ -82,7 +82,7 @@ export default function Home() {
             tailwind
           </a> +  <a 
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://tailwindcss.com"
+          href="https://ui.shadcn.com/docs/cli"
           target="_blank"
           rel="noopener noreferrer">
             shadcn UI
@@ -101,7 +101,7 @@ export default function Home() {
           drizzle
           </a> +  <a 
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://orm.drizzle.team/docs/" 
+          href="https://console.neon.tech/" 
           target="_blank"
           rel="noopener noreferrer"> 
           Neon db
@@ -114,13 +114,13 @@ export default function Home() {
 
           <a 
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://orm.drizzle.team/docs/" 
+          href="https://authjs.dev/getting-started/installation?framework=Next.js" 
           target="_blank"
           rel="noopener noreferrer"> 
           Auth js
           </a> +  <a 
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://orm.drizzle.team/docs/" 
+          href="https://console.cloud.google.com/apis/credentials" 
           target="_blank"
           rel="noopener noreferrer"> 
           Google auth
