@@ -1,4 +1,5 @@
 
+import { Button } from "@/components/ui/button";
 import { Code2Icon, Database, Globe2Icon, Shield, SwatchBook } from "lucide-react";
 import Image from "next/image";
 
@@ -26,7 +27,7 @@ export default function Home() {
           </li>
           <li>see the changes in real time</li>
         </ol>
-
+        
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
             className="rounded-xl border border-solid border-transparent transition-colors flex items-center  justify-center bg-purple-400 text-purple-950 gap-2 hover:bg-purple-500 dark:hover:bg-[#f8c8c8] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
