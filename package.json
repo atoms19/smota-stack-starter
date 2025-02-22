@@ -7,8 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "db:push":"drizzle-kit push", 
+    "db:migrate":"drizzle-kit migrate",
     "db:update": "drizzle-kit migrate && drizzle-kit push",
     "db:manager": "drizzle-kit studio"
+    ,"ui:add":"pnpm dlx shadcn@canary add"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
