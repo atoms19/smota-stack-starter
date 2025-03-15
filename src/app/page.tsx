@@ -1,13 +1,21 @@
 
+
+
 import { Button } from "@/components/ui/button";
+import { getQueryClient, HydrateClient, prefetch, procedures , serverCall} from "@/lib/serverProcedures";
+
+import { caller } from "@/procedures/router";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Code2Icon, Database, Globe2Icon, Shield, SwatchBook } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
 
+  const msg=serverCall.message()
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className=""
@@ -47,7 +55,11 @@ export default function Home() {
             open all references
           </a>
         </div>
+        <span className="text-gray-400">     
+           message from server : {msg}
+        </span>
       </main>
+
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <div
           className="flex items-center gap-1"
@@ -108,6 +120,7 @@ export default function Home() {
           Neon db
           </a>
         </div>
+        
         <div 
         className="flex items-center gap-1"
         >

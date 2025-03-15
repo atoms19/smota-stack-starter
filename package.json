@@ -7,15 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:push":"drizzle-kit push", 
-    "db:migrate":"drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
     "db:update": "drizzle-kit migrate && drizzle-kit push",
-    "db:manager": "drizzle-kit studio"
-    ,"ui:add":"pnpm dlx shadcn@canary add"
+    "db:manager": "drizzle-kit studio",
+    "ui:add": "pnpm dlx shadcn@canary add"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
     "@radix-ui/react-slot": "^1.1.2",
+    "@tanstack/react-query": "^5.68.0",
+    "@trpc/client": "11.0.0-rc.828",
+    "@trpc/server": "11.0.0-rc.828",
+    "@trpc/tanstack-react-query": "11.0.0-rc.828",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
@@ -25,8 +29,10 @@
     "next-auth": "5.0.0-beta.25",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "superjson": "^2.2.2",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.8",
