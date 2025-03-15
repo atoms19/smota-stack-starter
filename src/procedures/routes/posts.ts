@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { baseProcedure, defineProcedures } from "..";
 
+// get rid of this route
+
 let latest={
     name:'wow i love smota-stack',
     createdAt:'10-2-2025'

@@ -21,11 +21,11 @@ export default function PostPage() {
 
   return  (
     <div className="w-full h-full max-w-xl p-10 mx-auto">
-
-
+      <h1 className='text-4xl font-bold  w-full pt-10 py-2'>posts</h1>
+    <p className='text-gray-400 mb-5'>you might wonder why is this here , it is here to showcase the instant speed of making forms out of trpc and tanstack query </p>
 
     {latestPost ? (
-      <p className="truncate"><span className='text-purple-600 font-bold ml-0.5'>Your most recent post:</span> {latestPost.data.name}</p>
+      <p className="truncate"><span >Your most recent post:</span> <span className='text-purple-600 font-bold ml-0.5'>{latestPost.data.name}</span></p>
     ) : (
 
       <p className='text-slate-500'>You have no posts yet.</p>

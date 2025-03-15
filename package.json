@@ -11,7 +11,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:update": "drizzle-kit migrate && drizzle-kit push",
     "db:manager": "drizzle-kit studio",
-    "ui:add": "pnpm dlx shadcn@canary add"
+    "ui:add": "pnpm dlx shadcn@canary add",
+    "auth:init":"pnpm dlx auth secret"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",

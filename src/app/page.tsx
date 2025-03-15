@@ -6,8 +6,9 @@ import { getQueryClient, HydrateClient, prefetch, procedures , serverCall} from 
 
 import { caller } from "@/procedures/router";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { Code2Icon, Database, Globe2Icon, Shield, SwatchBook } from "lucide-react";
+import { ChevronLeftCircleIcon, ChevronRightIcon, Code2Icon, Database, Globe2Icon, Server, Shield, SwatchBook } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -57,6 +58,9 @@ export default function Home() {
         </div>
         <span className="text-gray-400">     
            message from server : {msg}
+           
+           <br/>
+           <Link href="/posts" className="text-purple-400 font-mono flex  underline font-bold hover:text-purple-500 ">see trpc in action <ChevronRightIcon/> </Link>
         </span>
       </main>
 
@@ -120,6 +124,29 @@ export default function Home() {
           Neon db
           </a>
         </div>
+
+        <div 
+        className="flex items-center gap-1"
+        >
+          <Server className="w-5 h-5 text-stone-600" />
+
+          <a 
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://trpc.io/docs" 
+          target="_blank"
+          rel="noopener noreferrer"> 
+          tRPC
+          </a> +  <a 
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://tanstack.com/query/latest/docs/framework/react/overview" 
+          target="_blank"
+          rel="noopener noreferrer"> 
+          Tanstack Query         
+          </a>
+        </div>
+        
+
+
         
         <div 
         className="flex items-center gap-1"
