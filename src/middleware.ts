@@ -1,5 +1,4 @@
 import { auth } from "@/auth";
-//import { getSessionDoctor } from "./lib/utils";
 
 export default auth(async (req) => {
    console.log("redired");

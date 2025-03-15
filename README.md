@@ -1,6 +1,6 @@
 # SmotaStack Readme  
 
-SmotaStack is a modern full-stack starter kit combining Next.js, Auth.js, Drizzle ORM, Tailwind CSS, ShadCN UI, and NeonDB. This guide focuses on setting up the project and customizing it for your needs after installation.  
+SmotaStack is a modern full-stack starter kit combining Next.js,tRPC, Auth.js, Drizzle ORM, Tailwind CSS, ShadCN UI, and NeonDB. This guide focuses on setting up the project and customizing it for your needs after installation.  
 
 ---
 
@@ -9,7 +9,7 @@ SmotaStack is a modern full-stack starter kit combining Next.js, Auth.js, Drizzl
 ### 1. Install Dependencies  
 Run the following command to install the required packages:  
 ```bash  
-npm install  
+pnpm install  
 ```  
 
 ---
@@ -30,25 +30,51 @@ AUTH_PROVIDER_SECRET=your_provider_secret
 DATABASE_URL=your_neon_db_connection_string  
 ```  
 
+or you could rename the existing `exapmple.env` to `.env.local`
+
 ---
+
+## Running the Application  
+
+Start the development server:  
+```bash  
+pnpm run dev  
+```  
+
+Visit [http://localhost:3000](http://localhost:3000) to view your app.  
+
+---
+
 
 ### 3. Running Database Migrations  
 
+### step 0 : Connection String
+Add your database connection string to the `.env.local` 
+
+``` DATABASE_URL= your_postgres_connection_string  
+```
 #### Step 1: Configure Drizzle  
 Ensure your database schema is defined in `/db/schema.ts`.  
 
-#### Step 2: Run Migrations  
-Generate and push migrations using Drizzle CLI:  
-```bash  
-npx drizzle-kit generate:migrations  
-npx drizzle-kit push  
-```  
+#### Step 2: Run Migrations And Push 
+Generate and push migrations using db helpers
+
+```bash
+pnpm run db:update
+```
+> note :  `db:update` is combination of db:migrate and `db:push`
 
 ---
 
 ### 4. Authentication Setup  
 
-#### Middleware  
+### step 1: Generate Auth Secret
+to generate auth secret and initialize auth run 
+```bash
+pnpm run auth:init
+```
+
+#### step 2 :Middleware  
 Set up authentication middleware by adding the following to `middleware.ts`:  
 ```javascript  
 import { authMiddleware } from "next-auth/middleware";  
@@ -59,6 +85,7 @@ export default authMiddleware({
 
 export const config = { matcher: ["/protected-route"] };  
 ```  
+
 
 #### Auth.js Configuration  
 Update `/pages/api/auth/[...nextauth].ts` with your preferred authentication providers:  
@@ -76,20 +103,19 @@ export default NextAuth({
   secret: process.env.AUTH_SECRET,  
 });  
 ```  
-
 ---
 
 ### 5. Adding Components with ShadCN UI  
 
 #### Step 1: Install a Component  
-Run the ShadCN UI CLI to install components:  
+To Install predefined components from shadcn UI component library use the `ui:add` helper followed by component name or just itself to choose multiple components   
 ```bash  
-npx shadcn add button  
+pnpm run ui:add button
 ```  
 
 #### Step 2: Use the Component  
 Import and use components in your app:  
-```javascript  
+```tsx
 import { Button } from "@/components/ui/button";  
 
 export default function Home() {  
@@ -98,42 +124,80 @@ export default function Home() {
 ```  
 
 #### Step 3: Customize Components  
-Modify the styles in `tailwind.config.js` or override the component styles directly in `/components/ui/`.  
+Modify the styles in `/app/styles/global.css` or override the component styles directly in `/components/ui/`.  
 
 ---
 
 ### 6. Customizing Tailwind  
 
 #### Update Colors  
-Modify the theme in `tailwind.config.js`:  
-```javascript  
-module.exports = {  
-  theme: {  
-    extend: {  
-      colors: {  
-        primary: "#4CAF50",  
-        secondary: "#FFC107",  
-      },  
-    },  
-  },  
-};  
+Modify the theme in `app/styles/global.css` by defiing css variables for colors fonts etc 
+```css
+@theme{  
+    --primary: #4CAF50;  
+    ---secondary: #FFC107;    
+}
 ```  
+then you can use `bg-primary` `text-secondary` etc this also applies to fonts 
 
-#### Add Utilities  
-Add custom utilities or plugins to enhance your styling capabilities.  
 
----
+# Defining procedures and routers 
+procedures are the default way to deal with server calls in smota stack they replace traditional REST APIs 
+procedures can be for data fetching mutations or any other secured or non secured action that you want to run on the server 
 
-## Running the Application  
+to define procedures head to `/procedures/`
+here you can see `./routes` folder and `router.ts` file 
+you can directly define the routes in the `router.ts` file
 
-Start the development server:  
-```bash  
-npm run dev  
-```  
+```ts
+export const procedureRouter=defineProcedures({
+    "say":baseProcedure.query(
+        ()=> "hello"
+    )
+})
+```
+`baseProcedures` are used for procedures that are used in normal cases where u dont want additional security
+and `secureProcedures` are used where you want additional security 
+`mutations` are used to mutate data
+see trpc documentation for more 
 
-Visit [http://localhost:3000](http://localhost:3000) to view your app.  
+to run a procedure in a server component use the `serverCall`
+```tsx
+import {serverCall} from "@/lib/serverProcedures"
 
----
+export default function RandomComponent(){
+   let message= serverCall.say()
+
+  return (
+    <div>
+      server said :{message}
+    </div>
+  )
+}
+```
+
+to run a procedure in a client component use `useQuery()` and `useProcedures()` hooks you can see an example in the posts page of the starter template 
+where revalidation is also being done
+
+```tsx
+"use client"
+import {serverCall} from "@/lib/serverProcedures"
+
+export default function RandomComponent(){
+
+  let procedures=useProcedures()
+  let message= useQuery(procedures.say.queryOptions())
+
+  return (
+    <div>
+      server said :{message.data}
+    </div>
+  )
+}
+
+```
+
+
 
 ## Next Steps  
 

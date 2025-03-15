@@ -47,20 +47,21 @@ export default function Home() {
            <Globe2Icon className="w-5 h-5 text-purple-950"/>
             Deploy now
           </a>
+          
           <a
             className="rounded-xl border border-solid border-black/[.8] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] hover:text-black dark:hover:bg-[#e2dede] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
           >
-            open all references
+            Open reference
           </a>
         </div>
         <span className="text-gray-400">     
            message from server : {msg}
            
            <br/>
-           <Link href="/posts" className="text-purple-400 font-mono flex  underline font-bold hover:text-purple-500 ">see trpc in action <ChevronRightIcon/> </Link>
+           <Link href="/posts" className="text-purple-500 dark:text-purple-400  font-mono flex  hover:underline font-bold hover:text-purple-600 dark:hover:text-purple-500 ">see smota stack in action <ChevronRightIcon/> </Link>
         </span>
       </main>
 

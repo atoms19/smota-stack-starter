@@ -42,7 +42,7 @@ export default function PostPage() {
         placeholder="Title"
          value={name}
         onChange={(e) => setName(e.target.value)}
-        className="outline-0 focus:ring-2 ring-purple-400 ring-offset-2 border-gray-200 focus:border-purple-500 border-2 rounded-lg px-4 py-2 text-black"
+        className="outline-0 focus:ring-2 ring-purple-400 ring-offset-2 dark:text-white dark:ring-offset-black dark:border-gray-400 border-gray-200 focus:border-purple-500 border-2 rounded-lg px-4 py-2 text-black"
       />
       <button
         type="submit"
