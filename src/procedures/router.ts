@@ -23,5 +23,6 @@ export const procedureRouter=defineProcedures({
     "posts":postRouter
     // <path> : <procedure>
 })
+
 export type ProcedureRouter=typeof procedureRouter;
 export const caller=createCaller(procedureRouter);

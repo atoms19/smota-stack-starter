@@ -1,12 +1,7 @@
 
 
-
-import { Button } from "@/components/ui/button";
-import { getQueryClient, HydrateClient, prefetch, procedures , serverCall} from "@/lib/serverProcedures";
-
-import { caller } from "@/procedures/router";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { ChevronLeftCircleIcon, ChevronRightIcon, Code2Icon, Database, Globe2Icon, Server, Shield, SwatchBook } from "lucide-react";
+import {serverCall} from "@/lib/serverProcedures";
+import { ChevronRightIcon, Code2Icon, Database, Globe2Icon, Server, Shield, SwatchBook } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 

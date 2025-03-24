@@ -77,21 +77,32 @@ pnpm run auth:init
 #### step 2 :Middleware  
 Set up authentication middleware by adding the following to `middleware.ts`:  
 ```javascript  
-import { authMiddleware } from "next-auth/middleware";  
 
-export default authMiddleware({  
-  publicRoutes: ["/login", "/signup"],  
-});  
 
-export const config = { matcher: ["/protected-route"] };  
-```  
+export default auth(async (req) => {
+
+   let publicPaths=[
+      "/",
+      "/auth/signup", 
+      "/posts"
+   ]
+
+   if (!req.auth && !publicPaths.includes(req.nextUrl.pathname)){
+      const newUrl = new URL("/auth/signup", req.nextUrl.origin);
+      return NextResponse.redirect(newUrl);
+   } else {
+
+   }
+});
+```
+
+after you run auth:init smota stack will automatically redirect all the routes to signup page unless its mentioned in the publicPaths 
+so add the paths to `publicPaths` if u dont want them secured by auth 
 
 
 #### Auth.js Configuration  
 Update `/pages/api/auth/[...nextauth].ts` with your preferred authentication providers:  
 ```javascript  
-import NextAuth from "next-auth";  
-import Providers from "next-auth/providers";  
 
 export default NextAuth({  
   providers: [  

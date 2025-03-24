@@ -5,5 +5,5 @@ import { db } from "./db"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [],
- // adapter:DrizzleAdapter(db) ucomment to use drizzle kit integration with next auth 
+ // adapter:DrizzleAdapter(db) ucomment to use drizzle kit integration with next auth   
 })

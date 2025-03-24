@@ -1,10 +1,17 @@
-import { auth } from "@/auth";
+import { auth } from "@/auth";;
+import { NextResponse } from "next/server";
 
 export default auth(async (req) => {
-   console.log("redired");
-   if (!req.auth && req.nextUrl.pathname !== "/login") {
-      const newUrl = new URL("/login", req.nextUrl.origin);
-      return Response.redirect(newUrl);
+
+   let publicPaths=[
+      "/",
+      "/signup",
+      "/posts"
+   ]
+
+   if (!req.auth && !publicPaths.includes(req.nextUrl.pathname)){
+      const newUrl = new URL("/signup", req.nextUrl.origin);
+      return NextResponse.redirect(newUrl);
    } else {
       //logic to verify session
       //redirect accordingly
@@ -12,5 +19,5 @@ export default auth(async (req) => {
 });
 
 export const config = {
-   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"]
+   matcher: [ "/((?!api|_next/static|_next/image|favicon.ico|[^/]+\\.[a-zA-Z0-9]+).*)"]
 };
