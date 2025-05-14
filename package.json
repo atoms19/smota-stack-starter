@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.9.0",
-    "@neondatabase/serverless": "^0.10.4", 
+    "@neondatabase/serverless": "^0.10.4",
     "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.36.4",
@@ -25,6 +25,7 @@
     "next": "15.2.3",
     "next-auth": "5.0.0-beta.25",
     "nextjs": "^0.0.3",
+    "pg": "^8.15.6",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "zod": "^3.24.3"
